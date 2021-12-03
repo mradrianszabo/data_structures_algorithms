@@ -80,5 +80,17 @@ class LinkedList<T>{
 }
 
 export class HashTable<T>{
+    private table : LinkedList<T>[];
 
+    constructor(private size: number = 5){
+        this.table = this.createTable();
+    }
+
+    private createTable() : LinkedList<T>[]{
+        let table = Array(this.size);
+        for(let i = 0; i< this.size; i++){
+            table[i] = new LinkedList<T>();
+        }
+        return table;
+    }
 }
