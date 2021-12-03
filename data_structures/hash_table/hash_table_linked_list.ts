@@ -94,6 +94,11 @@ export class HashTable<T>{
         this.table = this.createTable();
     }
 
+    public add(key : string, value : T) : void{
+        let index = hashKey(key, this.size);
+        this.table[index].append(key, value);
+    }
+
     private createTable() : LinkedList<T>[]{
         let table = Array(this.size);
         for(let i = 0; i< this.size; i++){
