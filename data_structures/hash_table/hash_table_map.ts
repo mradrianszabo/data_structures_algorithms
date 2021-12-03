@@ -18,6 +18,20 @@ export class HashTable<T>{
         this.numberOfItems = 0;
     }
 
+    private reSize(newSize : number){
+        this.size = newSize;
+        let newTable = this.createTable();
+        for(let elem of this.table){
+            if(elem.size){
+                elem.forEach((value, key)=>{
+                    let index = hashKey(key, this.size);
+                    newTable[index].set(key, value);
+                });
+            }
+        }
+        this.table = newTable;
+    }
+
     private createTable() : Map<string, T>[]{
         let table = Array(this.size);
         for(let i = 0; i<this.size; i++){
