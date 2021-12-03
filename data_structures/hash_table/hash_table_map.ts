@@ -100,7 +100,8 @@ for(let elem of [3, 8, 4]){
     console.log('searched by key: ', `keyOf${elem}, RESULT: `, searched);
 }
 
-for(let elem of [1, 8, 5]){
+for(let elem of [1, 2, 3, 4, 8, 5]){
     let deleted = numberTable.remove(`keyOf${elem}`);
     console.log(`removed by key: keyOf${elem}, RESULT: ${deleted}`);
 }
+console.log('size is: ', numberTable.getSize());
