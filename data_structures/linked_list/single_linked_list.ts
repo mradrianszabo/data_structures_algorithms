@@ -69,21 +69,25 @@ class SingleLinkedList<T>{
         return oldTail.value;
     }
 
-    public delete(value : T) : void{
+    public delete(value : T) : T{
         if(!this.head){
-            return;
+            return null;
         }
         if(this.head.value === value){
+            let deleted = this.head;
             this.head = this.head.next;
-            return;
+            return deleted.value;
         }
         let currentNode = this.head;
         while(currentNode.next !== null || currentNode.next.value !== value){
             currentNode = currentNode.next;
         }
         if(currentNode.next.value === value){
+            let deleted = currentNode.next;
             currentNode.next = currentNode.next.next;
+            return deleted.value;
         }
+        return null;
     }
 
     public search(value : T) : NodeElement<T>{
