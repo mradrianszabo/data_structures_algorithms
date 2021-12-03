@@ -102,6 +102,10 @@ export class HashTable<T>{
         let index = hashKey(key, this.size);
         return this.table[index].search(key);
     }
+    public delete(key : string) : T | null{
+        let index = hashKey(key, this.size);
+        return this.table[index].delete(key);
+    }
 
     private createTable() : LinkedList<T>[]{
         let table = Array(this.size);
