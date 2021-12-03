@@ -50,4 +50,22 @@ class SingleLinkedList<T>{
         }
         return oldHead.value;
     }
+
+    public deleteTail() : T{
+        if(!this.tail){
+            return null;
+        }
+        let oldTail = this.tail;
+        if(this.head === this.tail){
+            this.head = this.tail = null;
+        }else{
+            let currentNode = this.head;
+            while(currentNode.next.next !== null){
+                currentNode = currentNode.next;
+            }
+            currentNode.next = null;
+            this.tail = currentNode;
+        }
+        return oldTail.value;
+    }
 }
