@@ -18,6 +18,13 @@ export class HashTable<T>{
         this.numberOfItems = 0;
     }
 
+    private handleIncreaseSize(){
+        this.numberOfItems++;
+        if(this.numberOfItems / this.size >= 0.8){
+            this.reSize(this.size* 2);
+        }
+    }
+
     private reSize(newSize : number){
         this.size = newSize;
         let newTable = this.createTable();
