@@ -5,8 +5,8 @@ export class Stack<T>{
     ){}
 
     public push(element : T) : void{
-        this.storage[this.size]= element;
         this.size++;
+        this.storage[this.size]= element;
     }
 
     public pop() : T{
@@ -19,4 +19,23 @@ export class Stack<T>{
     public getSize() : number{
         return this.size;
     }
+}
+
+//try out
+//to run this code, run in terminal:
+//tsc stack.ts
+//node stack.js
+
+let lovelyNumbers = new Stack<number>();
+
+for(let elem of [1,2,3,4,5]){
+    lovelyNumbers.push(elem);
+    let size = lovelyNumbers.getSize();
+    console.log(elem, 'pushed, current size is: ', size);
+}
+
+for(let i = 0; i<3; i++){
+    let removed = lovelyNumbers.pop();
+    let size = lovelyNumbers.getSize();
+    console.log(removed, 'popped, current size is: ', size);
 }
