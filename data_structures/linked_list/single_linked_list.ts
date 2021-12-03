@@ -37,4 +37,17 @@ class SingleLinkedList<T>{
             this.head.next = oldHead;
         }
     }
+
+    public deleteHead() : T{
+        if(!this.head){
+            return null;
+        }
+        let oldHead = this.head;
+        if(this.head === this.tail){
+            this.head = this.tail = null;
+        }else{
+            this.head = this.head.next;
+        }
+        return oldHead.value;
+    }
 }
