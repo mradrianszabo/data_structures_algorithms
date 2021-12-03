@@ -36,6 +36,11 @@ export class HashTable<T>{
         return deleted;
     }
 
+    public search(key : string) : T{
+        let index = hashKey(key, this.size);
+        return this.table[index].get(key);
+    }
+
     private handleIncreaseSize() : void{
         this.numberOfItems++;
         if(this.numberOfItems / this.size >= 0.8){
