@@ -18,15 +18,22 @@ export class HashTable<T>{
         this.numberOfItems = 0;
     }
 
-    private handleIncreaseSize(){
+    private handleIncreaseSize() : void{
         this.numberOfItems++;
         if(this.numberOfItems / this.size >= 0.8){
             this.reSize(this.size* 2);
         }
     }
 
+    private handleDecreaseSize() : void{
+        this.numberOfItems--;
+        if(this.numberOfItems / this.size <= 0.3){
+            this.reSize(this.size/ 2);
+        }
+    }
+
     private reSize(newSize : number){
-        this.size = newSize;
+        this.size = Math.floor(newSize);
         let newTable = this.createTable();
         for(let elem of this.table){
             if(elem.size){
