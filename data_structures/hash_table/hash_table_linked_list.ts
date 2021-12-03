@@ -24,6 +24,26 @@ class LinkedList<T>{
             oldTail.next = this.tail;
         }
     }
+
+    public search(key: string) : T | null{
+        if(!this.tail || !this.head){
+            return null;
+        }
+        if(this.head === this.tail){
+            return this.head.value;
+        }
+        if(this.tail.key === key){
+            return this.tail?.value;
+        }
+        let currentNode : Node<T> = this.head;
+        while(currentNode.next !== null ){
+            if(currentNode.key === key){
+                return currentNode.value;
+            }
+            currentNode = currentNode.next;
+        }
+        return null;
+    }
 }
 
 export class HashTable<T>{
