@@ -12,8 +12,8 @@ class NodeElement<T>{
 
 class SingleLinkedList<T>{
     constructor(
-        private head : NodeElement<T>,
-        private tail : NodeElement<T>,
+        public head : NodeElement<T>,
+        public tail : NodeElement<T>,
     ){}
 
     public append(value : T) : void{
@@ -103,3 +103,4 @@ class SingleLinkedList<T>{
         return null;
     }
 }
+
