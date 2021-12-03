@@ -1,6 +1,6 @@
 //A linear collection of data elements. Each element points to the next one. Each node(element) is composed of data and a reference(link) to the next node.
 //Time complexity: Access : O(n); Search : O(n) Insertion : O(1) Deletion : O(n);
-//Advantage : add and remove way faster than at array
+//Advantage : add and remove(especially first element) way faster than at array
 //Disadvantage: no direct access(has only sequential access) like array has.
 
 class NodeElement<T>{
@@ -15,7 +15,7 @@ class SingleLinkedList<T>{
         public head?: NodeElement<T>,
         public tail?: NodeElement<T>,
     ){}
-
+//insert a new node to the end
     public append(value : T) : void{
         let newNode = new NodeElement<T>(value)
         if(!this.tail){
@@ -26,7 +26,7 @@ class SingleLinkedList<T>{
             oldTail.next = this.tail;
         }
     }
-
+//insert a new node to the beginning
     public prepend(value : T) : void{
         let newNode = new NodeElement<T>(value);
         if(!this.head){
@@ -37,7 +37,7 @@ class SingleLinkedList<T>{
             this.head.next = oldHead;
         }
     }
-
+//delete the first node, return the value of deleted node
     public deleteHead() : T{
         if(!this.head){
             return null;
@@ -50,15 +50,13 @@ class SingleLinkedList<T>{
         }
         return oldHead.value;
     }
-
+//delete the last node, return the value of deleted node
     public deleteTail() : T{
         if(!this.tail){
-            console.log('HAS NO TAIL')
             return null;
         }
         let oldTail = this.tail;
         if(this.head === this.tail){
-            console.log("HEAD N TAIL RE SAME")
             this.head = this.tail = null;
             return oldTail.value;
         }
@@ -69,7 +67,7 @@ class SingleLinkedList<T>{
         this.tail = currentNode;
         return oldTail.value;
     }
-
+//delete a node by value, return the value of deleted node
     public delete(value : T) : T{
         if(!this.head){
             return null;
@@ -94,7 +92,7 @@ class SingleLinkedList<T>{
 
         return null;
     }
-
+//find a node by value, return the node itself
     public search(value : T) : NodeElement<T>{
         if(!this.head){
             return null;
@@ -114,6 +112,9 @@ class SingleLinkedList<T>{
 }
 
 //try out
+//to run this code, run in terminal:
+//tsc single_linked_list.ts
+//node single_linked_list.js
 
 let listOfNumbers = new SingleLinkedList<number>();
 
