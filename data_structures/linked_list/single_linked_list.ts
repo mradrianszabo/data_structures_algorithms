@@ -6,15 +6,24 @@
 class NodeElement<T>{
     constructor(
         public value : T,
-        public next: NodeElement<T>,
+        public next?: NodeElement<T>,
     ){}
 }
 
 class SingleLinkedList<T>{
     constructor(
         private head : NodeElement<T>,
-        private tali : NodeElement<T>,
+        private tail : NodeElement<T>,
     ){}
 
-    
+    append(value : T) : void{
+        let newNode = new NodeElement<T>(value)
+        if(!this.tail){
+            this.head = this.tail = newNode;
+        }else{
+            let oldTail = this.tail;
+            this.tail = newNode;
+            oldTail.next = this.tail;
+        }
+    }
 }
