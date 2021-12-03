@@ -2,3 +2,10 @@
 //Time complexity: Access : O(n); Search : O(n) Insertion : O(1) Deletion : O(n);
 //Advantage : add and remove way faster than at array
 //Disadvantage: no direct access(has only sequential access) like array has.
+
+class NodeElement<T>{
+    constructor(
+        public value : T,
+        public next: NodeElement<T>,
+    ){}
+}
