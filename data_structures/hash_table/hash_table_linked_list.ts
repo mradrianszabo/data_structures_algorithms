@@ -79,6 +79,14 @@ class LinkedList<T>{
     }
 }
 
+function hashKey(key : string, size : number) : number{
+    let hash = 17;
+    for( let i = 0; i< key.length; i++){
+        hash*= key.charCodeAt(i);
+    }
+    return hash % size;
+}
+
 export class HashTable<T>{
     private table : LinkedList<T>[];
 
