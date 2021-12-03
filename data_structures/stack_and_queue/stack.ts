@@ -1,7 +1,7 @@
 export class Stack<T>{
     constructor(
-        public storage : Object = {},
-        public size : number = 0,
+        private storage : Object = {},
+        private size : number = 0,
     ){}
 
     public push(element : T) : void{
