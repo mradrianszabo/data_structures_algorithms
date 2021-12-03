@@ -1,3 +1,5 @@
+//This implementation doesn't come with built in resize functionality, however hash table map does!
+
 class Node<T>{
     constructor(
         public key: string,
