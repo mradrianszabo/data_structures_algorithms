@@ -117,34 +117,27 @@ class SingleLinkedList<T>{
 //node single_linked_list.js
 
 let listOfNumbers = new SingleLinkedList<number>();
-
-listOfNumbers.append(2);
-console.log('2 appended to empty list. HEAD: ', listOfNumbers.head.value, 'TAIL: ', listOfNumbers.tail.value);
-listOfNumbers.append(3);
-console.log('3 appended to list. HEAD: ', listOfNumbers.head.value, 'TAIL: ', listOfNumbers.tail.value);
+//append
+for(let elem of [2,3,4,5,6,7]){
+    listOfNumbers.append(elem);
+    console.log(`${elem} appended to list. NEW HEAD VALUE: ${listOfNumbers.head.value}, NEW TAIL VALUE: ${listOfNumbers.tail.value}`);
+}
+//prepend
 listOfNumbers.prepend(1);
-console.log('1 prepended to list. HEAD: ', listOfNumbers.head.value, 'TAIL: ', listOfNumbers.tail.value);
-listOfNumbers.append(4);
-listOfNumbers.append(5);
-listOfNumbers.append(6);
-listOfNumbers.append(7);
-console.log('4, 5, 6, 7 appended to list. HEAD: ', listOfNumbers.head.value, 'TAIL: ', listOfNumbers.tail.value);
-
-let searched = listOfNumbers.search(1);
-console.log('search for 1. RESULT: ', searched);
-searched = listOfNumbers.search(7);
-console.log('search for 7. RESULT: ', searched);
-searched = listOfNumbers.search(3);
-console.log('searched for 3. RESULT: ', searched);
-
-let deleted = listOfNumbers.delete(1);
-console.log('1 deleted. HEAD: ', listOfNumbers.head.value, 'deleted elem value: ', deleted);
-deleted = listOfNumbers.delete(7);
-console.log('7 deleted. TAIL: ', listOfNumbers.tail.value, 'deleted elem value: ', deleted);
-deleted = listOfNumbers.delete(3);
-console.log('3 deleted. ', 'deleted elem value: ', deleted);
-
-deleted = listOfNumbers.deleteHead();
-console.log('head deleted. HEAD: ', listOfNumbers.head.value, 'deleted elem value: ', deleted);
+console.log('1 prepended to list. NEW HEAD VALUE: ', listOfNumbers.head.value, 'NEW TAIL VALUE: ', listOfNumbers.tail.value);
+//search
+for(let elem of [1, 7, 3]){
+    let searched = listOfNumbers.search(elem);
+    console.log(`search for ${elem}. RESULT:`, searched)
+}
+//delete
+for(let elem of [1, 7, 3]){
+    let deleted = listOfNumbers.delete(elem);
+    console.log(`${elem} deleted. NEW HEAD VALUE: ${listOfNumbers.head.value} NEW TAIL VALUE: ${listOfNumbers.tail.value}. Deleted elem value: ${deleted}`);
+}
+//deleteHead
+let deleted = listOfNumbers.deleteHead();
+console.log('head deleted. NEW HEAD VALUE: ', listOfNumbers.head.value, 'deleted elem value: ', deleted);
+//deleteTail
 deleted = listOfNumbers.deleteTail();
-console.log('tail deleted. TAIL: ', listOfNumbers.tail.value, 'deleted elem value: ', deleted);
+console.log('tail deleted. NEW TAIL VALUE: ', listOfNumbers.tail.value, 'deleted elem value: ', deleted);
