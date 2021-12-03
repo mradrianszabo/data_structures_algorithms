@@ -1,3 +1,11 @@
+export function hashKey(key: string, tableSize: number) : number{
+    let hash = 7;
+    for(let i = 0; i< key.length; i++){
+        hash*= key.charCodeAt(i);
+    }
+    return hash % tableSize;
+}
+
 export class HashTable<T>{
     private table : Map<string, T>[];
     private numberOfItems : number;
