@@ -51,20 +51,20 @@ var SingleLinkedList = /** @class */ (function () {
     };
     SingleLinkedList.prototype.deleteTail = function () {
         if (!this.tail) {
+            console.log('HAS NO TAIL');
             return null;
         }
         var oldTail = this.tail;
         if (this.head === this.tail) {
+            console.log("HEAD N TAIL RE SAME");
             this.head = this.tail = null;
+            return oldTail.value;
         }
-        else {
-            var currentNode = this.head;
-            while (currentNode.next.next !== null) {
-                currentNode = currentNode.next;
-            }
-            currentNode.next = null;
-            this.tail = currentNode;
+        var currentNode = this.head;
+        while (currentNode.next !== this.tail) {
+            currentNode = currentNode.next;
         }
+        this.tail = currentNode;
         return oldTail.value;
     };
     SingleLinkedList.prototype["delete"] = function (value) {
@@ -81,6 +81,9 @@ var SingleLinkedList = /** @class */ (function () {
             if (currentNode.next.value === value) {
                 var deleted_2 = currentNode.next;
                 currentNode.next = currentNode.next.next;
+                if (deleted_2 === this.tail) {
+                    this.tail = currentNode;
+                }
                 return deleted_2.value;
             }
             currentNode = currentNode.next;

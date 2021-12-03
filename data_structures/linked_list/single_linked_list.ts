@@ -53,19 +53,20 @@ class SingleLinkedList<T>{
 
     public deleteTail() : T{
         if(!this.tail){
+            console.log('HAS NO TAIL')
             return null;
         }
         let oldTail = this.tail;
         if(this.head === this.tail){
+            console.log("HEAD N TAIL RE SAME")
             this.head = this.tail = null;
-        }else{
-            let currentNode = this.head;
-            while(currentNode.next.next !== null){
-                currentNode = currentNode.next;
-            }
-            currentNode.next = null;
-            this.tail = currentNode;
+            return oldTail.value;
         }
+        let currentNode = this.head;
+        while(currentNode.next !== this.tail){
+            currentNode = currentNode.next;
+        }
+        this.tail = currentNode;
         return oldTail.value;
     }
 
@@ -83,6 +84,9 @@ class SingleLinkedList<T>{
             if(currentNode.next.value === value){
                 let deleted = currentNode.next;
                 currentNode.next = currentNode.next.next;
+                if(deleted === this.tail){
+                    this.tail = currentNode;
+                }
                 return deleted.value;
             }
             currentNode = currentNode.next;
