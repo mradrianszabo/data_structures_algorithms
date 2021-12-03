@@ -23,4 +23,16 @@ class DoubleLinkedList<T>{
             this.tail.prev = oldTail;
         }
     }
+
+    public prepend(value: T) : void{
+        let newNode = new Node2<T>(value);
+        if(!this.head){
+            this.head = this.tail = newNode;
+        }else{
+            let oldHead = this.head;
+            this.head = newNode;
+            this.head.next = oldHead;
+            oldHead.prev = this.head;
+        }
+    }
 }
