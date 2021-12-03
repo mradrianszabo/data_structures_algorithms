@@ -26,6 +26,16 @@ export class HashTable<T>{
         this.table[index].set(key, value);
     }
 
+    public remove(key: string) : T{
+        if(this.autoResize){
+            this.handleDecreaseSize()
+        }
+        let index = hashKey(key, this.size);
+        let deleted = this.table[index].get(key);
+        this.table[index].delete(key);
+        return deleted;
+    }
+
     private handleIncreaseSize() : void{
         this.numberOfItems++;
         if(this.numberOfItems / this.size >= 0.8){
