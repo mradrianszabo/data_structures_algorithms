@@ -37,6 +37,9 @@ class DoubleLinkedList<T>{
     }
 
     public deleteHead() : T{
+        if(!this.head){
+            return null;
+        }
         let oldHead = this.head;
         if(this.head === this.tail){
             this.head = this.tail = null;
@@ -45,5 +48,19 @@ class DoubleLinkedList<T>{
             this.head.prev = null;
         }
         return oldHead.value;
+    }
+
+    public deleteTail() : T{
+        if(!this.tail){
+            return null;
+        }
+        let oldTail = this.tail;
+        if(this.head === this.tail){
+            this.head = this.tail = null;
+        }else{
+            this.tail = oldTail.prev;
+            this.tail.next = null;
+        }
+        return oldTail.value;
     }
 }
