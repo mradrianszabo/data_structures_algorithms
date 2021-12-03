@@ -9,3 +9,12 @@ class NodeElement<T>{
         public next: NodeElement<T>,
     ){}
 }
+
+class SingleLinkedList<T>{
+    constructor(
+        private head : NodeElement<T>,
+        private tali : NodeElement<T>,
+    ){}
+
+    
+}
