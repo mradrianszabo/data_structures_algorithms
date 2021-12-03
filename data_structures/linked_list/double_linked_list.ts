@@ -35,4 +35,15 @@ class DoubleLinkedList<T>{
             oldHead.prev = this.head;
         }
     }
+
+    public deleteHead() : T{
+        let oldHead = this.head;
+        if(this.head === this.tail){
+            this.head = this.tail = null;
+        }else{
+            this.head = oldHead.next;
+            this.head.prev = null;
+        }
+        return oldHead.value;
+    }
 }
