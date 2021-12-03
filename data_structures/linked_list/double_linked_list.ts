@@ -81,10 +81,27 @@ class DoubleLinkedList<T>{
             return oldTail;
         }
         let currentNode = this.head;
-        while(currentNode.value !== value){
+        while(currentNode.value !== value || currentNode !== this.tail){
             if(currentNode.value === value){
                 currentNode.prev.next = currentNode.next;
                 currentNode.next.prev = currentNode.prev;
+                return currentNode;
+            }
+            currentNode = currentNode.next;
+        }
+        return null;
+    }
+
+    public search(value : T) : Node2<T>{
+        if(!this.head){
+            return null;
+        }
+        if(this.head === this.tail){
+            return this.head;
+        }
+        let currentNode = this.head;
+        while(currentNode.value !== value || currentNode !== this.tail){
+            if(currentNode.value === value){
                 return currentNode;
             }
             currentNode = currentNode.next;
