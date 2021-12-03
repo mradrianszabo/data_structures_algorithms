@@ -63,4 +63,32 @@ class DoubleLinkedList<T>{
         }
         return oldTail.value;
     }
+
+    public delete(value : T) : Node2<T>{
+        if(!this.head){
+            return null;
+        }
+        if(this.head.value === value){
+            let oldHead = this.head;
+            this.head = this.head.next;
+            this.head.prev = null;
+            return oldHead;
+        }
+        if(this.tail.value === value){
+            let oldTail = this.tail;
+            this.tail = this.tail.prev;
+            this.tail.next = null;
+            return oldTail;
+        }
+        let currentNode = this.head;
+        while(currentNode.value !== value){
+            if(currentNode.value === value){
+                currentNode.prev.next = currentNode.next;
+                currentNode.next.prev = currentNode.prev;
+                return currentNode;
+            }
+            currentNode = currentNode.next;
+        }
+        return null;
+    }
 }
