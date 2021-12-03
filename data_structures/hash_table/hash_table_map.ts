@@ -26,7 +26,7 @@ export class HashTable<T>{
         this.table[index].set(key, value);
     }
 
-    public remove(key: string) : T{
+    public remove(key: string) : T | undefined{
         if(this.autoResize){
             this.handleDecreaseSize()
         }
@@ -36,7 +36,7 @@ export class HashTable<T>{
         return deleted;
     }
 
-    public search(key : string) : T{
+    public search(key : string) : T | undefined{
         let index = hashKey(key, this.size);
         return this.table[index].get(key);
     }
