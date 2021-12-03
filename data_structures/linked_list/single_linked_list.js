@@ -78,12 +78,12 @@ var SingleLinkedList = /** @class */ (function () {
         }
         var currentNode = this.head;
         while (currentNode.next !== null || currentNode.next.value !== value) {
+            if (currentNode.next.value === value) {
+                var deleted_2 = currentNode.next;
+                currentNode.next = currentNode.next.next;
+                return deleted_2.value;
+            }
             currentNode = currentNode.next;
-        }
-        if (currentNode.next.value === value) {
-            var deleted_2 = currentNode.next;
-            currentNode.next = currentNode.next.next;
-            return deleted_2.value;
         }
         return null;
     };
@@ -96,7 +96,6 @@ var SingleLinkedList = /** @class */ (function () {
         }
         var currentNode = this.head;
         while (currentNode.next !== null) {
-            console.log('CURRENT:', currentNode.value);
             if (currentNode.value === value) {
                 return currentNode;
             }

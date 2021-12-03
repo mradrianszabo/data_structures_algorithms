@@ -80,13 +80,14 @@ class SingleLinkedList<T>{
         }
         let currentNode = this.head;
         while(currentNode.next !== null || currentNode.next.value !== value){
+            if(currentNode.next.value === value){
+                let deleted = currentNode.next;
+                currentNode.next = currentNode.next.next;
+                return deleted.value;
+            }
             currentNode = currentNode.next;
         }
-        if(currentNode.next.value === value){
-            let deleted = currentNode.next;
-            currentNode.next = currentNode.next.next;
-            return deleted.value;
-        }
+
         return null;
     }
 
