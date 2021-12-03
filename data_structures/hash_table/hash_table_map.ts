@@ -40,6 +40,9 @@ export class HashTable<T>{
         let index = hashKey(key, this.size);
         return this.table[index].get(key);
     }
+    public getSize(){
+        return this.size;
+    }
 
     private handleIncreaseSize() : void{
         this.numberOfItems++;
