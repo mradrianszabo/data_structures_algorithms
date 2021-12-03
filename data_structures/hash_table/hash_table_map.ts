@@ -11,8 +11,8 @@ export class HashTable<T>{
     private numberOfItems : number;
 
     constructor(
-        public size: number = 3,
-        public autoResize: boolean = true,
+        private size: number = 3,
+        private autoResize: boolean = true,
     ){
         this.table = this.createTable();
         this.numberOfItems = 0;
@@ -79,4 +79,27 @@ export class HashTable<T>{
         }
         return table;
     }
+}
+
+//try out
+//to run this code, run in terminal:
+//tsc hash_table_map.ts
+//node hash_table_map.js
+
+let numberTable = new HashTable<number>();
+let size = numberTable.getSize();
+console.log('size is: ', size);
+for(let elem of [1,2,3,4,5,6,7,8,9]){
+    numberTable.add(`keyOf${elem}`, elem);
+}
+console.log('size is: ', numberTable.getSize());
+
+for(let elem of [3, 8, 4]){
+    let searched = numberTable.search(`keyOf${elem}`);
+    console.log('searched by key: ', `keyOf${elem}, RESULT: `, searched);
+}
+
+for(let elem of [1, 8, 5]){
+    let deleted = numberTable.remove(`keyOf${elem}`);
+    console.log(`removed by key: keyOf${elem}, RESULT: ${deleted}`);
 }
