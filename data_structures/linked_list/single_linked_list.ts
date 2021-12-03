@@ -70,11 +70,10 @@ class SingleLinkedList<T>{
     }
 
     public delete(value : T) : void{
-        if(this.head === null){
+        if(!this.head){
             return;
         }
         if(this.head.value === value){
-            let oldHead = this.head;
             this.head = this.head.next;
             return;
         }
@@ -85,5 +84,22 @@ class SingleLinkedList<T>{
         if(currentNode.next.value === value){
             currentNode.next = currentNode.next.next;
         }
+    }
+
+    public search(value : T) : NodeElement<T>{
+        if(!this.head){
+            return null;
+        }
+        if(this.head === this.tail){
+            return this.head;
+        }
+        let currentNode = this.head;
+        while(currentNode.next !== null || currentNode.value !== value){
+            currentNode = currentNode.next;
+        }
+        if(currentNode.value === value){
+            return currentNode;
+        }
+        return null;
     }
 }
