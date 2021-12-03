@@ -1,4 +1,4 @@
-export function hashKey(key: string, tableSize: number) : number{
+function hashKey(key: string, tableSize: number) : number{
     let hash = 7;
     for(let i = 0; i< key.length; i++){
         hash*= key.charCodeAt(i);
@@ -83,7 +83,7 @@ export class HashTable<T>{
 
 //try out
 //to run this code, run in terminal:
-//tsc hash_table_map.ts
+//tsc
 //node hash_table_map.js
 
 let numberTable = new HashTable<number>();
@@ -91,6 +91,7 @@ let size = numberTable.getSize();
 console.log('size is: ', size);
 for(let elem of [1,2,3,4,5,6,7,8,9]){
     numberTable.add(`keyOf${elem}`, elem);
+    console.log(elem, 'added, with the key: ', `keyOf${elem}`);
 }
 console.log('size is: ', numberTable.getSize());
 

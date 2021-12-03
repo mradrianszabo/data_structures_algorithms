@@ -1,102 +1,93 @@
 "use strict";
-exports.__esModule = true;
-exports.HashTable = exports.hashKey = void 0;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.HashTable = void 0;
 function hashKey(key, tableSize) {
-    var hash = 7;
-    for (var i = 0; i < key.length; i++) {
+    let hash = 7;
+    for (let i = 0; i < key.length; i++) {
         hash *= key.charCodeAt(i);
     }
     return hash % tableSize;
 }
-exports.hashKey = hashKey;
-var HashTable = /** @class */ (function () {
-    function HashTable(size, autoResize) {
-        if (size === void 0) { size = 3; }
-        if (autoResize === void 0) { autoResize = true; }
+class HashTable {
+    constructor(size = 3, autoResize = true) {
         this.size = size;
         this.autoResize = autoResize;
         this.table = this.createTable();
         this.numberOfItems = 0;
     }
-    HashTable.prototype.add = function (key, value) {
+    add(key, value) {
         if (this.autoResize) {
             this.handleIncreaseSize();
         }
-        var index = hashKey(key, this.size);
+        let index = hashKey(key, this.size);
         this.table[index].set(key, value);
-    };
-    HashTable.prototype.remove = function (key) {
+    }
+    remove(key) {
         if (this.autoResize) {
             this.handleDecreaseSize();
         }
-        var index = hashKey(key, this.size);
-        var deleted = this.table[index].get(key);
-        this.table[index]["delete"](key);
+        let index = hashKey(key, this.size);
+        let deleted = this.table[index].get(key);
+        this.table[index].delete(key);
         return deleted;
-    };
-    HashTable.prototype.search = function (key) {
-        var index = hashKey(key, this.size);
+    }
+    search(key) {
+        let index = hashKey(key, this.size);
         return this.table[index].get(key);
-    };
-    HashTable.prototype.getSize = function () {
+    }
+    getSize() {
         return this.size;
-    };
-    HashTable.prototype.handleIncreaseSize = function () {
+    }
+    handleIncreaseSize() {
         this.numberOfItems++;
         if (this.numberOfItems / this.size >= 0.8) {
             this.reSize(this.size * 2);
         }
-    };
-    HashTable.prototype.handleDecreaseSize = function () {
+    }
+    handleDecreaseSize() {
         this.numberOfItems--;
         if (this.numberOfItems / this.size <= 0.3) {
             this.reSize(this.size / 2);
         }
-    };
-    HashTable.prototype.reSize = function (newSize) {
-        var _this = this;
+    }
+    reSize(newSize) {
         this.size = Math.floor(newSize);
-        var newTable = this.createTable();
-        for (var _i = 0, _a = this.table; _i < _a.length; _i++) {
-            var elem = _a[_i];
+        let newTable = this.createTable();
+        for (let elem of this.table) {
             if (elem.size) {
-                elem.forEach(function (value, key) {
-                    var index = hashKey(key, _this.size);
+                elem.forEach((value, key) => {
+                    let index = hashKey(key, this.size);
                     newTable[index].set(key, value);
                 });
             }
         }
         this.table = newTable;
-    };
-    HashTable.prototype.createTable = function () {
-        var table = Array(this.size);
-        for (var i = 0; i < this.size; i++) {
+    }
+    createTable() {
+        let table = Array(this.size);
+        for (let i = 0; i < this.size; i++) {
             table[i] = new Map();
         }
         return table;
-    };
-    return HashTable;
-}());
+    }
+}
 exports.HashTable = HashTable;
 //try out
 //to run this code, run in terminal:
 //tsc hash_table_map.ts
 //node hash_table_map.js
-var numberTable = new HashTable();
-var size = numberTable.getSize();
+let numberTable = new HashTable();
+let size = numberTable.getSize();
 console.log('size is: ', size);
-for (var _i = 0, _a = [1, 2, 3, 4, 5, 6, 7, 8, 9]; _i < _a.length; _i++) {
-    var elem = _a[_i];
-    numberTable.add("keyOf" + elem, elem);
+for (let elem of [1, 2, 3, 4, 5, 6, 7, 8, 9]) {
+    numberTable.add(`keyOf${elem}`, elem);
 }
 console.log('size is: ', numberTable.getSize());
-for (var _b = 0, _c = [3, 8, 4]; _b < _c.length; _b++) {
-    var elem = _c[_b];
-    var searched = numberTable.search("keyOf" + elem);
-    console.log('searched by key: ', "keyOf" + elem + ", RESULT: ", searched);
+for (let elem of [3, 8, 4]) {
+    let searched = numberTable.search(`keyOf${elem}`);
+    console.log('searched by key: ', `keyOf${elem}, RESULT: `, searched);
 }
-for (var _d = 0, _e = [1, 8, 5]; _d < _e.length; _d++) {
-    var elem = _e[_d];
-    var deleted = numberTable.remove("keyOf" + elem);
-    console.log("removed by key: keyOf" + elem + ", RESULT: " + deleted);
+for (let elem of [1, 8, 5]) {
+    let deleted = numberTable.remove(`keyOf${elem}`);
+    console.log(`removed by key: keyOf${elem}, RESULT: ${deleted}`);
 }
