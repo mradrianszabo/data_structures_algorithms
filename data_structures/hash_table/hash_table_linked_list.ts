@@ -98,6 +98,10 @@ export class HashTable<T>{
         let index = hashKey(key, this.size);
         this.table[index].append(key, value);
     }
+    public search(key: string) : T | null{
+        let index = hashKey(key, this.size);
+        return this.table[index].search(key);
+    }
 
     private createTable() : LinkedList<T>[]{
         let table = Array(this.size);
