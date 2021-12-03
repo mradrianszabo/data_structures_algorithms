@@ -115,3 +115,22 @@ export class HashTable<T>{
         return table;
     }
 }
+
+//try out
+//to run this code, run in terminal:
+//tsc hash_table_linked_list.ts
+//node hash_table_linked_list.js
+
+let numberTable = new HashTable<number>();
+for(let elem of [1, 2, 3, 4, 5, 6, 7, 8, 9]){
+    numberTable.add(`keyOf${elem}`, elem);
+    console.log(`${elem} added, with key : keyOf${elem}`);
+}
+for(let elem of [1, 4, 6, 9]){
+    let searched = numberTable.search(`keyOf${elem}`);
+    console.log(`searched by key: keyOf${elem}. Result is : ${searched}`);
+}
+for(let elem of [1, 2, 4, 6, 9]){
+    let deleted = numberTable.delete(`keyOf${elem}`);
+    console.log(`deleted by key: keyOf${elem}, deleted elem: ${deleted}`);
+}
