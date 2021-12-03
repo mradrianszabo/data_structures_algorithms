@@ -18,6 +18,14 @@ export class HashTable<T>{
         this.numberOfItems = 0;
     }
 
+    public add(key: string, value : T) : void{
+        if(this.autoResize){
+            this.handleIncreaseSize();
+        }
+        let index = hashKey(key, this.size);
+        this.table[index].set(key, value);
+    }
+
     private handleIncreaseSize() : void{
         this.numberOfItems++;
         if(this.numberOfItems / this.size >= 0.8){
