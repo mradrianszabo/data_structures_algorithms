@@ -1,19 +1,19 @@
-class Node2<T>{
+class Node<T>{
     constructor(
         public value : T,
-        public prev?: Node2<T>,
-        public next?: Node2<T>
+        public prev?: Node<T>,
+        public next?: Node<T>
     ){}
    }
 
-class DoubleLinkedList<T>{
+export class DoubleLinkedList<T>{
     constructor(
-        public head?: Node2<T>,
-        public tail?: Node2<T>
+        public head?: Node<T>,
+        public tail?: Node<T>
     ){}
 
     public append(value: T) : void{
-        let newNode = new Node2<T>(value);
+        let newNode = new Node<T>(value);
         if(!this.head){
             this.head = this.tail = newNode;
         }else{
@@ -25,7 +25,7 @@ class DoubleLinkedList<T>{
     }
 
     public prepend(value: T) : void{
-        let newNode = new Node2<T>(value);
+        let newNode = new Node<T>(value);
         if(!this.head){
             this.head = this.tail = newNode;
         }else{
@@ -64,7 +64,7 @@ class DoubleLinkedList<T>{
         return oldTail.value;
     }
 
-    public delete(value : T) : Node2<T>{
+    public delete(value : T) : Node<T>{
         if(!this.head){
             return null;
         }
@@ -92,7 +92,7 @@ class DoubleLinkedList<T>{
         return null;
     }
 
-    public search(value : T) : Node2<T>{
+    public search(value : T) : Node<T>{
         if(!this.head){
             return null;
         }
@@ -134,15 +134,15 @@ let searched = doubleList.search('three');
 console.log('three searched. RESULT: ', searched);
 
 //deleteTail
-{
+
     let deleted = doubleList.deleteTail();
     console.log('Tail deleted. NEW TAIL: ', doubleList.tail, ' Deleted node: ', deleted);
-}
+
 //deleteHead
-{
-    let deleted = doubleList.deleteHead();
+
+    deleted = doubleList.deleteHead();
     console.log('head deleted. NEW HEAD: ', doubleList.head, ' Deleted node: ', deleted);
-}
+
 //delete
 for(let elem of ['one', 'three', 'six']){
     let deleted = doubleList.delete(elem);

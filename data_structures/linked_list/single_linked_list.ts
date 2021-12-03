@@ -3,21 +3,21 @@
 //Advantage : add and remove(especially first element) way faster than at array
 //Disadvantage: no direct access(has only sequential access) like array has.
 
-class NodeElement<T>{
+class Node<T>{
     constructor(
         public value : T,
-        public next?: NodeElement<T>,
+        public next?: Node<T>,
     ){}
 }
 
-class SingleLinkedList<T>{
+export class SingleLinkedList<T>{
     constructor(
-        public head?: NodeElement<T>,
-        public tail?: NodeElement<T>,
+        public head?: Node<T>,
+        public tail?: Node<T>,
     ){}
 //insert a new node to the end
     public append(value : T) : void{
-        let newNode = new NodeElement<T>(value)
+        let newNode = new Node<T>(value)
         if(!this.tail){
             this.head = this.tail = newNode;
         }else{
@@ -28,7 +28,7 @@ class SingleLinkedList<T>{
     }
 //insert a new node to the beginning
     public prepend(value : T) : void{
-        let newNode = new NodeElement<T>(value);
+        let newNode = new Node<T>(value);
         if(!this.head){
             this.head = this.tail = newNode;
         }else{
@@ -93,7 +93,7 @@ class SingleLinkedList<T>{
         return null;
     }
 //find a node by value, return the node itself
-    public search(value : T) : NodeElement<T>{
+    public search(value : T) : Node<T>{
         if(!this.head){
             return null;
         }
