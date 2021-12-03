@@ -138,3 +138,7 @@ console.log('7 deleted. TAIL: ', listOfNumbers.tail, 'deleted elem value: ', del
 deleted = listOfNumbers.delete(3);
 console.log('3 deleted. ', 'deleted elem value: ', deleted);
 
+deleted = listOfNumbers.deleteHead();
+console.log('head deleted. HEAD: ', listOfNumbers.head, 'deleted elem value: ', deleted);
+deleted = listOfNumbers.deleteTail();
+console.log('tail deleted. TAIL: ', listOfNumbers.tail, 'deleted elem value: ', deleted);
