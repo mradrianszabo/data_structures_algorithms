@@ -16,4 +16,8 @@ export class Queue<T>{
         this.head++;
         return removed;
     }
+
+    public getSize() : number{
+        return this.tail - this.head;
+    }
 }
