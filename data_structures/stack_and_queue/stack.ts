@@ -23,7 +23,7 @@ export class Stack<T>{
 
 //try out
 //to run this code, run in terminal:
-//tsc stack.ts
+//tsc
 //node stack.js
 
 let lovelyNumbers = new Stack<number>();

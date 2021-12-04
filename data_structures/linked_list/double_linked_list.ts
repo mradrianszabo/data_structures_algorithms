@@ -115,7 +115,7 @@ export class DoubleLinkedList<T>{
 
 //try out
 //to run this code, run in terminal:
-//tsc double_linked_list.ts
+//tsc
 //node double_linked_list.js
 
 let doubleList = new DoubleLinkedList<string>();

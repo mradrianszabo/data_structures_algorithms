@@ -24,7 +24,7 @@ export class Queue<T>{
 
 //try out
 //to run this code, run in terminal:
-//tsc queue.ts
+//tsc 
 //node queue.js
 
 let friendlyNumbers = new Queue<number>();

@@ -113,7 +113,7 @@ export class SingleLinkedList<T>{
 
 //try out
 //to run this code, run in terminal:
-//tsc single_linked_list.ts
+//tsc
 //node single_linked_list.js
 
 let listOfNumbers = new SingleLinkedList<number>();
